@@ -1,17 +1,22 @@
 # CustomIQ
 
-CustomIQ is a full-stack prototype for an AI-assisted avatar companion. The repository combines the Flutter mobile client and the Node.js API that manages users, avatars, conversations, messages, and backend-mediated AI flows.
-
-## Why This Project Matters
-
-This project shows end-to-end product delivery across mobile UI, backend API design, authentication, MongoDB persistence, media/avatar workflows, and AI integration boundaries. The public version intentionally routes AI capability through the backend architecture instead of exposing provider keys in the mobile client.
+CustomIQ is a full-stack avatar assistant application with a Flutter client and a Node.js API. The app covers user accounts, onboarding, avatar flows, conversations, messages, and backend-mediated assistant features.
 
 ## Repository Structure
 
 ```text
-frontend/   Flutter client for onboarding, dashboards, profile, avatar, and chat-oriented screens
+frontend/   Flutter application for onboarding, dashboard, profile, avatar, and chat screens
 backend/    Express and MongoDB API for users, avatars, conversations, messages, and assistant flows
 ```
+
+## Features
+
+- User registration and login with JWT-backed API flows
+- Avatar viewing and generation workflows
+- Conversation and message endpoints
+- Profile and dashboard screens in Flutter
+- Runtime backend URL configuration for local and deployed environments
+- Server-side provider configuration for assistant and avatar-generation features
 
 ## Tech Stack
 
@@ -43,13 +48,8 @@ flutter pub get
 flutter run --dart-define=CUSTOMIQ_API_BASE_URL=http://127.0.0.1:3001/api
 ```
 
-## Security Notes
+## Configuration
 
-- Secrets are not committed.
-- Mobile code does not require an OpenAI key.
-- AI provider credentials belong in the backend `.env` file.
-- The old split repositories are retained only as historical/private sources.
+Backend configuration is read from `.env`. The Flutter app reads the API base URL from `CUSTOMIQ_API_BASE_URL`.
 
-## Current Status
-
-CustomIQ is a portfolio prototype. It demonstrates product breadth and full-stack integration, but it is not presented as production-ready. The next improvements would be automated tests, stronger request validation, consolidated API contracts, and screenshots or demo media.
+Secrets are not stored in the mobile client. Provider keys such as `OPENAI_API_KEY` belong in the backend environment.

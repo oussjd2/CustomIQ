@@ -1,20 +1,22 @@
-# BackendCustomIQ
+# CustomIQ Backend
 
-Backend API for the `CustomIQ` prototype. This service handles user accounts, authentication, avatar persistence, conversations, messages, and AI-assisted avatar generation for the Flutter client in `FrontendCustomIQ`.
+Express API for the CustomIQ Flutter application. The service handles user accounts, authentication, avatar persistence, conversations, messages, and server-side avatar generation.
 
-## What It Does
+## Features
 
-- Registers and authenticates users with JWT
-- Stores user profiles and generated avatar URLs in MongoDB
-- Exposes routes for conversations, messages, and chatbot-related flows
-- Supports avatar generation through the OpenAI Images API
+- User registration and login
+- JWT-based authentication flow
+- MongoDB persistence through Mongoose models
+- Avatar generation endpoint
+- Conversation and message routes
+- Email support through Nodemailer
 
 ## Tech Stack
 
 - Node.js
 - Express
-- MongoDB + Mongoose
-- JWT authentication
+- MongoDB and Mongoose
+- JWT
 - Nodemailer
 - OpenAI API
 - Swagger tooling
@@ -22,11 +24,11 @@ Backend API for the `CustomIQ` prototype. This service handles user accounts, au
 ## Project Structure
 
 ```text
-backend/
-  controllers/
-  models/
-  routes/
-  public/
+controllers/
+models/
+routes/
+public/
+server.js
 ```
 
 ## Getting Started
@@ -43,7 +45,7 @@ Copy `.env.example` to `.env` and update the values:
 
 ```env
 JWT_SECRET=replace-with-a-long-random-secret
-DATABASE_URL=mongodb://localhost:27017/backend
+DATABASE_URL=mongodb://localhost:27017/customiq
 PORT=3001
 HOST=127.0.0.1
 OPENAI_API_KEY=replace-with-your-openai-api-key
@@ -66,17 +68,6 @@ The server runs by default at `http://127.0.0.1:3001`.
 - `GET /api/conversations`
 - `GET /api/messages`
 
-## Current Status
+## Security
 
-This repository is a prototype backend. Core flows are present, but production hardening is still needed:
-
-- route-level validation
-- automated tests
-- auth middleware coverage
-- centralized error handling
-- Swagger setup polish
-
-## Notes
-
-- Secrets are no longer stored in source files. Use `.env`.
-- This backend is designed to pair with `FrontendCustomIQ`.
+Secrets are loaded from environment variables. Do not commit `.env` files or provider credentials.

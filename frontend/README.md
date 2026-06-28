@@ -1,14 +1,15 @@
-# FrontendCustomIQ
+# CustomIQ Frontend
 
-Flutter client for the `CustomIQ` prototype. The app combines authentication, onboarding, dashboard views, avatar-related flows, chat-oriented features, and embedded 3D/web content.
+Flutter client for CustomIQ. The app includes onboarding, authentication screens, dashboards, profile views, avatar flows, chat-oriented screens, and embedded 3D/web content.
 
-## What It Does
+## Features
 
-- user onboarding and login
-- dashboard and profile views
-- avatar viewing and generation flows
-- chat and voice-oriented interfaces
-- local token storage for authenticated sessions
+- User onboarding and login screens
+- Dashboard and profile views
+- Avatar viewing and generation flows
+- Chat and voice-oriented interfaces
+- Local token storage for authenticated sessions
+- Runtime API base URL configuration
 
 ## Tech Stack
 
@@ -38,8 +39,6 @@ flutter run ^
   --dart-define=CUSTOMIQ_API_BASE_URL=http://127.0.0.1:3001/api
 ```
 
-The public portfolio version does not call OpenAI directly from the mobile client. AI-assisted flows should be routed through the backend API.
-
 ## Main App Areas
 
 - splash and onboarding
@@ -48,16 +47,4 @@ The public portfolio version does not call OpenAI directly from the mobile clien
 - profile and avatar pages
 - assistant and chat-related flows
 
-## Current Status
-
-This is a prototype frontend with useful breadth. It already demonstrates multi-screen Flutter work, state management, and media integration. The next improvements should be:
-
-- feature-by-feature screenshots
-- backend contract documentation
-- widget and integration tests
-- cleanup of unused dependencies
-- stronger naming consistency
-
-## Related Repository
-
-- `BackendCustomIQ` provides the API used by this client.
+AI provider keys are not configured in the Flutter client. Assistant and avatar-generation requests should go through the backend API.
