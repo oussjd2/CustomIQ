@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:avatarmakercopy/const.dart';
 import 'CameraAnalysisScreen.dart';  // Ensure the correct import path for CameraAnalysisScreen
 
 class ChatPage extends StatefulWidget {
@@ -17,12 +15,6 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final _openAI = OpenAI.instance.build(
-    token: OPENAI_API_KEY,
-    baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),
-    enableLog: true,
-  );
-
   final FlutterTts flutterTts = FlutterTts();
   bool _isTtsEnabled = true;
 
@@ -132,23 +124,20 @@ class _ChatPageState extends State<ChatPage> {
 
   // Sends the initial category-specific prompt to the model
   void sendInitialPrompt(String prompt) async {
-    final request = ChatCompleteText(
-      model: GptTurbo0301ChatModel(),
-      messages: [Messages(role: Role.user, content: prompt)],
-      maxToken: 200,
-    );
-    final response = await _openAI.onChatCompletion(request: request);
-    if (response!.choices.isNotEmpty && response.choices.first.message != null) {
-      setState(() {
-        _messages.insert(0, ChatMessage(
-            user: _gptChatUser,
-            createdAt: DateTime.now(),
-            text: response!.choices.first.message!.content
-        ));
-        if (_isTtsEnabled) {
-          flutterTts.speak(response.choices.first.message!.content);
-        }
-      });
+    final response = "Selected assistant mode: $selectedCategory. "
+        "This public prototype disables direct client-side OpenAI calls; "
+        "assistant responses should be served through the backend API.";
+
+    setState(() {
+      _messages.insert(0, ChatMessage(
+          user: _gptChatUser,
+          createdAt: DateTime.now(),
+          text: response
+      ));
+    });
+
+    if (_isTtsEnabled) {
+      flutterTts.speak(response);
     }
   }
 
@@ -157,31 +146,21 @@ class _ChatPageState extends State<ChatPage> {
       _messages.insert(0, m);
       _typingUsers.add(_gptChatUser);
     });
-    List<Messages> messagesHistory = _messages.reversed.map((m) {
-      return Messages(role: m.user == _currentUser ? Role.user : Role.assistant, content: m.text);
-    }).toList();
-
-    final request = ChatCompleteText(
-      model: GptTurbo0301ChatModel(),
-      messages: messagesHistory,
-      maxToken: 200,
-    );
-
     try {
-      final response = await _openAI.onChatCompletion(request: request);
-      for (var element in response!.choices) {
-        if (element.message != null) {
-          setState(() {
-            _messages.insert(0, ChatMessage(
-                user: _gptChatUser,
-                createdAt: DateTime.now(),
-                text: element.message!.content
-            ));
-            if (_isTtsEnabled) {
-              flutterTts.speak(element.message!.content);
-            }
-          });
-        }
+      final response = "Message received. In the public portfolio version, "
+          "AI chat is intentionally routed away from the mobile client. "
+          "Connect this screen to the backend assistant endpoint before enabling live responses.";
+
+      setState(() {
+        _messages.insert(0, ChatMessage(
+            user: _gptChatUser,
+            createdAt: DateTime.now(),
+            text: response
+        ));
+      });
+
+      if (_isTtsEnabled) {
+        flutterTts.speak(response);
       }
     } catch (e) {
       print("An unexpected error occurred: $e");

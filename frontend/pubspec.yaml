@@ -1,5 +1,5 @@
 name: avatarmakercopy
-description: "A new Flutter project."
+description: "Flutter client for the CustomIQ avatar assistant prototype."
 publish_to: 'none'  # Prevents accidental publishing to pub.dev
 
 version: 1.0.0+1
@@ -28,7 +28,6 @@ dependencies:
   connectivity: ^3.0.6
   file_picker: ^8.0.3
   dash_chat_2: 0.0.18
-  chat_gpt_sdk: 2.2.5
   flutter_tts: ^3.3.3
   camera:
   google_ml_kit: ^0.18.0

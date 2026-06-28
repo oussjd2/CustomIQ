@@ -5,7 +5,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../models/user.dart';
 
 class ApiService {
-  final String baseUrl = "http://localhost:3001/api";
+  final String baseUrl = const String.fromEnvironment(
+    'CUSTOMIQ_API_BASE_URL',
+    defaultValue: 'http://localhost:3001/api',
+  );
   final _storage = const FlutterSecureStorage();
   String? _currentUserId;
 
