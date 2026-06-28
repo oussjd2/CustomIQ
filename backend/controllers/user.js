@@ -7,39 +7,26 @@ import {sendPasswordResetEmail} from "./mail.js";
 
 
 export async function loginUser(req, res) {
-    console.log(req.body); // Debugging: Log request body
-
     const { user_id, password } = req.body;
-    let comparisonResult = 0; // Initialize comparison result to 0 (false)
 
     try {
         const user = await User.findOne({ user_id: user_id });
-        console.log("user", user);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // For debugging: Hardcoded password for comparison
-        const hardcodedPassword = password; // This should be the hashed password stored in the database
-        const providedPassword = password; // The plaintext password provided in the request
-
-        // Perform hardcoded comparison
-        if (providedPassword === hardcodedPassword) {
-            comparisonResult = 1; // If passwords match, set comparisonResult to 1 (true)
-        } else {
-            // Perform bcrypt comparison as fallback to verify hashed password matches
-            comparisonResult = await bcrypt.compare(providedPassword, user.password) ? 1 : 0;
+        const passwordMatches = await bcrypt.compare(password, user.password);
+        if (!passwordMatches) {
+            return res.status(401).json({ message: "Invalid credentials" });
         }
 
-        console.log("comparisonResult", comparisonResult);
-        if (comparisonResult === 0) {
-            return res.status(400).json({ message: "Invalid credentials" });
+        if (!process.env.JWT_SECRET) {
+            return res.status(500).json({ message: "JWT_SECRET is not configured" });
         }
 
-        // Continue with the rest of the login logic
         const token = jwt.sign(
             { userId: user._id, name: user.name, email: user.email, role: user.role },
-            process.env.JWT_SECRET, // Ensure this environment variable is correctly set in your environment
+            process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
 
@@ -60,12 +47,11 @@ export async function createUser(req, res) {
     const { name, user_id, email, password } = req.body;
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             name,
             user_id,
             email,
-            password: hashedPassword,
+            password,
         });
 
         const savedUser = await newUser.save();
@@ -89,12 +75,11 @@ export async function createAdminUser(req, res) {
     }
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             name,
             user_id,
             email,
-            password: hashedPassword,
+            password,
             role
         });
 

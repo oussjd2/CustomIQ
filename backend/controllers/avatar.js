@@ -1,22 +1,29 @@
 // controllers/avatarController.js
 
+import crypto from 'node:crypto';
 import User from '../models/user.js';
 import Avatar from '../models/avatar.js'; // Ensure this import is correct
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-    apiKey: "REDACTED_OPENAI_API_KEY",
-});
-
 export async function generateAndSaveAvatar(req, res) {
-    const validUserId = "65ea12c6c265a514927f6f4a"; // Hardcoded user ID for testing
-    const { description } = req.body;
+    const { description, userId } = req.body;
+
+    if (!process.env.OPENAI_API_KEY) {
+        return res.status(500).json({ message: "OPENAI_API_KEY is not configured" });
+    }
+
+    if (!description || !userId) {
+        return res.status(400).json({ message: "description and userId are required" });
+    }
+
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+    });
 
     try {
-        const user = await User.findById(validUserId);
+        const user = await User.findById(userId);
         if (!user) return res.status(404).json({ message: "User not found" });
 
-        // Assuming you want to use DALL-E 2 for image generation based on the context
         const response = await openai.images.generate({
             model: "dall-e-2",
             prompt: description,
@@ -24,12 +31,11 @@ export async function generateAndSaveAvatar(req, res) {
             size: "1024x1024",
         });
 
-        // Adjust according to the actual response structure
-        // This is an assumed structure based on your given documentation snippet
         const avatarUrl = response.data[0].url;
 
         const newAvatar = new Avatar({
-            user_id: validUserId,
+            id: crypto.randomUUID(),
+            user_id: userId,
             avatar_url: avatarUrl,
             name: description,
         });

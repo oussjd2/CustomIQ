@@ -1,11 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express and MongoDB backend for the CustomIQ avatar assistant prototype.",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "start": "node backend/server.js",
     "swagger": "swagger-jsdoc -d swaggerDef.js -o swagger.json && swagger-ui-express serve swagger.json"
   },

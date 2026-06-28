@@ -28,6 +28,7 @@ const publicPath = path.join(__dirname, 'public');
 
 
 const port = process.env.PORT || 3001;
+const host = process.env.HOST || "127.0.0.1";
 
 
 // CORS Middleware
@@ -39,8 +40,10 @@ mongoose.Promise = global.Promise;
 
 const databaseName = 'backend';
 
+const databaseUrl = process.env.DATABASE_URL || `mongodb://localhost:27017/${databaseName}`;
+
 mongoose
-  .connect(`mongodb://localhost:27017/${databaseName}`, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log(`Connected to ${databaseName}`);
   })
@@ -73,8 +76,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal Server Error' });
 });
 
-const HOST = process.env.HOST || "127.0.0.1";
-app.listen(process.env.PORT, HOST, () => {
-  console.log(`Server is running on ${HOST} on port ${process.env.PORT}`);
+app.listen(port, host, () => {
+  console.log(`Server is running on ${host} on port ${port}`);
 });
 
