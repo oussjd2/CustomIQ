@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="690" viewBox="0 0 1120 690" role="img" aria-labelledby="title desc">
+<title id="title">Application architecture</title><desc id="desc">Public modules and integration boundaries · not a claim of a fully connected live AI pipeline</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#5486b4"/></marker></defs>
+<rect width="1120" height="690" rx="20" fill="#f2f8fe"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="40" y="52" fill="#12344e" font-size="26" font-weight="700">Application architecture</text>
+<text x="40" y="82" fill="#48657c" font-size="16">Public modules and integration boundaries · not a claim of a fully connected live AI pipeline</text>
+<rect x="40" y="140" width="325" height="135" rx="12" fill="#dfedfc" stroke="#b8cfe3"/>
+<text x="58" y="171" fill="#12344e" font-size="18" font-weight="700">Flutter application</text>
+<text x="58" y="199" fill="#48657c" font-size="15">Accounts and profile</text>
+<text x="58" y="222" fill="#48657c" font-size="15">Avatar viewing and model loading</text>
+<text x="58" y="245" fill="#48657c" font-size="15">Persona chat and rendering settings</text>
+<rect x="425" y="140" width="310" height="135" rx="12" fill="#dfedfc" stroke="#b8cfe3"/>
+<text x="443" y="171" fill="#12344e" font-size="18" font-weight="700">Express API</text>
+<text x="443" y="199" fill="#48657c" font-size="15">Users and authentication</text>
+<text x="443" y="222" fill="#48657c" font-size="15">Avatars, conversations, messages</text>
+<text x="443" y="245" fill="#48657c" font-size="15">Provider credentials on server</text>
+<rect x="795" y="140" width="285" height="135" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="813" y="171" fill="#12344e" font-size="18" font-weight="700">MongoDB / Mongoose</text>
+<text x="813" y="199" fill="#48657c" font-size="15">User and avatar records</text>
+<text x="813" y="222" fill="#48657c" font-size="15">Conversation/message models</text>
+<rect x="40" y="355" width="325" height="110" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="58" y="386" fill="#12344e" font-size="18" font-weight="700">Ready Player Me</text>
+<text x="58" y="414" fill="#48657c" font-size="15">Embedded avatar creator</text>
+<text x="58" y="437" fill="#48657c" font-size="15">Hosted GLB model URLs</text>
+<rect x="425" y="355" width="310" height="110" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="443" y="386" fill="#12344e" font-size="18" font-weight="700">Device capabilities</text>
+<text x="443" y="414" fill="#48657c" font-size="15">ModelViewer with AR enabled</text>
+<text x="443" y="437" fill="#48657c" font-size="15">Flutter TTS voice playback</text>
+<rect x="795" y="355" width="285" height="110" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="813" y="386" fill="#12344e" font-size="18" font-weight="700">OpenAI integration</text>
+<text x="813" y="414" fill="#48657c" font-size="15">Server-side avatar images</text>
+<text x="813" y="437" fill="#48657c" font-size="15">Existing generation endpoint</text>
+<rect x="40" y="535" width="695" height="80" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="58" y="566" fill="#12344e" font-size="18" font-weight="700">Camera / ML Kit exploration</text>
+<text x="58" y="594" fill="#48657c" font-size="15">Camera capture and object-detection module</text>
+<path d="M365 200 H425" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<path d="M735 200 H795" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<path d="M200 275 V355" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<path d="M270 275 V310 H580 V355" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<path d="M670 275 V320 H938 V355" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<path d="M40 230 H20 V575 H40" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="40" y="665" fill="#48657c" font-size="14">Live persona-chat backend inference is not connected in the public screen. OpenAI image output is not a 3D GLB model.</text>
+</g></svg>

@@ -1,5 +1,7 @@
 # CustomIQ Backend
 
+See the [main project README](../README.md#run-locally) for current setup, device networking, and the distinction between historical AI demos and the public checkout.
+
 Express API for the CustomIQ Flutter application. The service handles user accounts, authentication, avatar persistence, conversations, messages, and server-side avatar generation.
 
 ## Features

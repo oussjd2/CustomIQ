@@ -1,5 +1,7 @@
 # CustomIQ Frontend
 
+See the [main project README](../README.md) for the visual walkthrough, feature status, and current [setup instructions](../README.md#run-locally). The avatar-chat screen currently returns placeholder responses; live backend inference is not connected there.
+
 Flutter client for CustomIQ. The app includes onboarding, authentication screens, dashboards, profile views, avatar flows, chat-oriented screens, and embedded 3D/web content.
 
 ## Features

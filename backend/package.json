@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "start": "node backend/server.js",
+    "start": "node server.js",
     "swagger": "swagger-jsdoc -d swaggerDef.js -o swagger.json && swagger-ui-express serve swagger.json"
   },
   "author": "",

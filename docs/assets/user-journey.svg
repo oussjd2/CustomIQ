@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="440" viewBox="0 0 1120 440" role="img" aria-labelledby="title desc">
+<title id="title">From avatar to interaction</title><desc id="desc">Product journey illustrated by the historical presentation and public Flutter modules</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#5486b4"/></marker></defs>
+<rect width="1120" height="440" rx="20" fill="#f2f8fe"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="40" y="52" fill="#12344e" font-size="26" font-weight="700">From avatar to interaction</text>
+<text x="40" y="82" fill="#48657c" font-size="16">Product journey illustrated by the historical presentation and public Flutter modules</text>
+<rect x="40" y="150" width="184" height="125" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="58" y="181" fill="#12344e" font-size="18" font-weight="700">01 · Account</text>
+<text x="58" y="209" fill="#48657c" font-size="15">Register and sign in</text>
+<path d="M224 210 H256" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="256" y="150" width="184" height="125" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="274" y="181" fill="#12344e" font-size="18" font-weight="700">02 · Avatar</text>
+<text x="274" y="209" fill="#48657c" font-size="15">Create or load GLB</text>
+<path d="M440 210 H472" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="472" y="150" width="184" height="125" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="490" y="181" fill="#12344e" font-size="18" font-weight="700">03 · Configure</text>
+<text x="490" y="209" fill="#48657c" font-size="15">Quality, textures, pose</text>
+<path d="M656 210 H688" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="688" y="150" width="184" height="125" rx="12" fill="white" stroke="#b8cfe3"/>
+<text x="706" y="181" fill="#12344e" font-size="18" font-weight="700">04 · Persona</text>
+<text x="706" y="209" fill="#48657c" font-size="15">Choose a chat role</text>
+<path d="M872 210 H904" fill="none" stroke="#5486b4" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="904" y="150" width="184" height="125" rx="12" fill="#dfedfc" stroke="#b8cfe3"/>
+<text x="922" y="181" fill="#12344e" font-size="18" font-weight="700">05 · Interact</text>
+<text x="922" y="209" fill="#48657c" font-size="15">Avatar and speech</text>
+<rect x="256" y="310" width="608" height="70" rx="12" fill="#dfedfc" stroke="#b8cfe3"/>
+<text x="274" y="341" fill="#12344e" font-size="18" font-weight="700">AR-enabled model viewing · device support required</text>
+<text x="40" y="415" fill="#48657c" font-size="14">Historical AI demo: public avatar-chat responses are placeholders until backend inference is connected.</text>
+</g></svg>
